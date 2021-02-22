@@ -14,8 +14,8 @@ setup(name='apricotexp',
           'seaborn',
           'comet-ml',
           'apricot',
-          'sklearn.model_selection',
-          'scipy.sparse'
+          'scikit-learn',
+          'scipy'
                    
           
       ],
