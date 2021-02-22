@@ -13,7 +13,7 @@ setup(name='apricotexp',
           'matplotlib',
           'seaborn',
           'comet-ml',
-          'apricot',
+          'apricot-select',
           'scikit-learn',
           'scipy'
                    
