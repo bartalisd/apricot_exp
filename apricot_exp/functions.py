@@ -1,7 +1,7 @@
 from apricot import FacilityLocationSelection, FeatureBasedSelection, MaxCoverageSelection
 from scipy.sparse import csr_matrix
 import numpy as np
-import pandas as pd
+import neptune
 
 def facilityloc(X_train, Y_train, n, metric):
     X_train_arr = X_train.to_numpy() 
@@ -51,22 +51,3 @@ def mixed(X_train, Y_train, n, metric, function):
     Y_train_a=pd.concat(Y_frames)
     return(X_train_a, Y_train_a)
 
-def randomtrain_eval(model, X_tr, Y_tr, X_te, Y_te):
-    X_train_arr = X_tr.to_numpy()
-    Y_train_arr = np.array(Y_tr)
-    idxs = np.arange(X_tr.shape[0])
-    np.random.shuffle(idxs)
-    idx = idxs[:n]
-    Xi, yi = X_tr[idx], Y_tr[idx]  
-    model.fit(Xi, yi)
-    Y_pred = model.predict(X_te)
-    Y_pred_proba = model.predict_proba(X_te)[:,1]
-    acc = accuracy_score(Y_te, Y_pred)
-    pre = precision_score(Y_te, Y_pred)
-    rec = recall_score(Y_te, Y_pred)
-    roc = roc_auc_score(Y_te, Y_pred_proba)
-    #neptune.log_metric('acc',acc)
-    #neptune.log_metric('pre',pre)
-    #neptune.log_metric('rec',rec)
-    #neptune.log_metric('roc',roc)
-    return acc, pre, rec, roc
