@@ -1,2 +1,15 @@
 # apricot_exp
-This is a test.
+
+# Install
+
+```bash
+cd apricot_exp
+pip install .
+```
+
+# Tests
+
+```bash
+cd tests
+pytest
+```
