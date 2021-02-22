@@ -13,6 +13,11 @@ setup(name='apricotexp',
           'matplotlib',
           'seaborn',
           'comet-ml',
+          'apricot',
+          'sklearn.model_selection',
+          'scipy.sparse'
+                   
+          
       ],
       zip_safe=False
 )
