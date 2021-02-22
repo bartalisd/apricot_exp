@@ -16,7 +16,7 @@ setup(name='apricotexp',
           'apricot-select',
           'scikit-learn',
           'scipy',
-          'pytest'
+          'pytest',
           'neptune-client'
                    
           
