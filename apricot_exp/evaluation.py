@@ -36,7 +36,7 @@ def randomtrain_eval(model, X_tr, Y_tr, X_te, Y_te, use_neptune=False):
     pre = precision_score(Y_te, Y_pred)
     rec = recall_score(Y_te, Y_pred)
     roc = roc_auc_score(Y_te, Y_pred_proba)
-    if use_neptun
+    if use_neptune:
         neptune.log_metric('acc',acc)
         neptune.log_metric('pre',pre)
         neptune.log_metric('rec',rec)
