@@ -15,9 +15,8 @@ setup(name='apricotexp',
           'comet-ml',
           'apricot-select',
           'scikit-learn',
-          'scipy'
-                   
-          
+          'scipy',
+          'pytest'
       ],
       zip_safe=False
 )

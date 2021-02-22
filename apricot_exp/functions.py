@@ -1,5 +1,7 @@
 from apricot import FacilityLocationSelection, FeatureBasedSelection, MaxCoverageSelection
 from scipy.sparse import csr_matrix
+import numpy as np
+import pandas as pd
 
 def facilityloc(X_train, Y_train, n, metric):
     X_train_arr = X_train.to_numpy() 
