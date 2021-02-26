@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 import neptune
 import numpy as np
+import pandas as pd
     
 def traintest(X,Y,size):
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=size, random_state=42)
