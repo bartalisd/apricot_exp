@@ -23,7 +23,7 @@ def train_eval(model, X_tr, Y_tr, X_te, Y_te, use_neptune=False):
         neptune.log_metric('roc',roc)
     return acc, pre, rec, roc
 
-def randomtrain_eval(model, X_tr, Y_tr, X_te, Y_te, use_neptune=False):
+def randomtrain_eval(model, X_tr, Y_tr, X_te, Y_te, use_neptune=False, n):
     X_train_arr = X_tr.to_numpy()
     Y_train_arr = np.array(Y_tr)
     idxs = np.arange(X_tr.shape[0])
