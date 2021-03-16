@@ -26,17 +26,21 @@ def train_eval(model, X_tr, Y_tr, X_te, Y_te, use_neptune=False):
 def randomtrain_eval(model, X_tr, Y_tr, X_te, Y_te, n, use_neptune=False):
     X_train_arr = X_tr.to_numpy()
     Y_train_arr = np.array(Y_tr)
+    X_test_arr = X_te.to_numpy()
+    Y_test_arr = np.array(Y_te)
+    print(X_train_arr.shape, Y_train_arr.shape)
+    print(X_test_arr.shape, Y_test_arr.shape)
     idxs = np.arange(X_tr.shape[0])
     np.random.shuffle(idxs)
     idx = idxs[:n]
-    Xi, yi = X_tr[idx], Y_tr[idx]  
+    Xi, yi = X_train_arr[idx,:], Y_train_arr[idx]  
     model.fit(Xi, yi)
-    Y_pred = model.predict(X_te)
-    Y_pred_proba = model.predict_proba(X_te)[:,1]
-    acc = accuracy_score(Y_te, Y_pred)
-    pre = precision_score(Y_te, Y_pred)
-    rec = recall_score(Y_te, Y_pred)
-    roc = roc_auc_score(Y_te, Y_pred_proba)
+    Y_pred = model.predict(X_test_arr)
+    Y_pred_proba = model.predict_proba(X_test_arr)[:,1]
+    acc = accuracy_score(Y_test_arr, Y_pred)
+    pre = precision_score(Y_test_arr, Y_pred)
+    rec = recall_score(Y_test_arr, Y_pred)
+    roc = roc_auc_score(Y_test_arr, Y_pred_proba)
     if use_neptune:
         neptune.log_metric('acc',acc)
         neptune.log_metric('pre',pre)
