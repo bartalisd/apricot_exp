@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-%matplotlib inline
+#%matplotlib inline
 
 def barplot_res(dataframe, percentage, metric, y_name):
     selector = dataframe.apply(lambda x: percentage in x["tags"], axis=1)
