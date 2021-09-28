@@ -8,6 +8,7 @@ setup(name='apricotexp',
       author_email='bartalisdavid.98@gmail.com',
       packages=['apricot_exp'],
       install_requires=[
+          'comet_ml',
           'numpy',
           'pandas',
           'matplotlib',
@@ -17,9 +18,7 @@ setup(name='apricotexp',
           'scikit-learn',
           'scipy',
           'pytest',
-          'neptune-client'
-                   
-          
+          'nltk'
       ],
       zip_safe=False
 )
