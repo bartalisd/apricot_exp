@@ -18,7 +18,8 @@ setup(name='apricotexp',
           'scikit-learn',
           'scipy',
           'pytest',
-          'nltk'
+          'nltk',
+          'optuna'
       ],
       zip_safe=False
 )
