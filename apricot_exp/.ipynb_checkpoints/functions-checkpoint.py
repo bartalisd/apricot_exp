@@ -1,29 +1,28 @@
 from apricot import FacilityLocationSelection, FeatureBasedSelection, MaxCoverageSelection
 from scipy.sparse import csr_matrix
 import numpy as np
-import neptune
 import pandas as pd
 
-def facilityloc(X_train, Y_train, n, metric):
+def facilityloc(X_train, Y_train, n, metric, optimizer):
     X_train_arr = X_train.to_numpy() 
     Y_train_arr = np.array(Y_train) 
-    selector = FacilityLocationSelection(n, metric, verbose=True) 
+    selector = FacilityLocationSelection(n, metric, optimizer, verbose=True) 
     selector.fit(X_train)
     Xi, yi = selector.transform(X_train_arr, Y_train_arr)
     return(Xi, yi)
 
-def featureb(X_train, Y_train, n, function):
+def featureb(X_train, Y_train, n, function, optimizer):
     X_train_arr = csr_matrix(X_train.values)
     Y_train_arr = np.array(Y_train)
-    selector = FeatureBasedSelection(n, concave_func=function, optimizer='two-stage', verbose=False)
+    selector = FeatureBasedSelection(n, concave_func=function, optimizer, verbose=False)
     selector.fit(X_train_arr)
     Xi, yi = selector.transform(X_train_arr, Y_train_arr)
     return(Xi, yi)
 
-def maxcov(X_train, Y_train, n):
+def maxcov(X_train, Y_train, n, optimizer):
     X_train_arr = csr_matrix(X_train.values)
     Y_train_arr = np.array(Y_train)
-    selector = MaxCoverageSelection(n, optimizer='naive')
+    selector = MaxCoverageSelection(n, optimizer)
     selector.fit(X_train_arr)
     Xi, yi = selector.transform(X_train_arr, Y_train_arr)
     return(Xi, yi)
