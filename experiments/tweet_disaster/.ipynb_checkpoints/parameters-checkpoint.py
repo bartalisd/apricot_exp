@@ -10,7 +10,7 @@ def param(function):
     elif function == "facilitylocation":
         parameters = [
             ("function", "choice", ["cityblock", "cosine", "euclidean", "l1", "l2", "manhattan", "correlation"]),
-            ("optimizer", "choice", ["random","modular", "naive", "lazy", "approximate-lazy", "two-stage", "stochastic", "sample", "greedi", "bidirectional"]),
+            #("optimizer", "choice", ["random","modular", "naive", "lazy", "approximate-lazy", "two-stage", "stochastic", "sample", "greedi", "bidirectional"]),
         ]
     elif function == "maxcoverage":
         parameters = [
@@ -18,6 +18,17 @@ def param(function):
         ]
     return parameters
 
+def extract_grid(parameters):
+    """Extract grid space from manually defined search parameters"""
+    grid = {}
+    for c_name, c_type, c_vals in parameters:
+        if c_type == "choice":
+            grid[c_name] = c_vals
+        elif c_type == "fixed":
+            grid[c_name] = [c_vals]
+        else:
+            raise ValueError("GridSearch can only use categorical search space!")
+    return grid
 
 from optuna.samplers import TPESampler, RandomSampler, GridSampler
 def algo(search_alg, parameters):
