@@ -5,7 +5,7 @@ def param(function):
     if function == "featurebased":
         parameters = [
             ("function", "choice", ["log","sqrt"]),
-            ("optimizer", "choice", ["random","modular", "naive", "lazy", "approximate-lazy", "two-stage", "stochastic", "sample", "greedi", "bidirectional"]),
+            ("optimizer", "choice", ["lazy", "approximate-lazy", "stochastic", "sample"]),
         ]
     elif function == "facilitylocation":
         parameters = [
